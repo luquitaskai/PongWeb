@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bio86t48v3xeu"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_021sc"]
+[ext_resource type="Texture2D" uid="uid://drmc7exwlg8b3" path="res://logo.png" id="1_47k80"]
+[ext_resource type="Texture2D" uid="uid://dkkb0qi8h5w84" path="res://Comenzar.png" id="2_p7dwn"]
+[ext_resource type="Texture2D" uid="uid://5thhte044yut" path="res://Salir.png" id="3_qfel3"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_021sc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 38.0
+offset_right = 1005.0
+offset_bottom = 299.0
+texture = ExtResource("1_47k80")
+
+[node name="Comenzar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 351.0
+offset_right = 697.0
+offset_bottom = 414.0
+theme_override_colors/icon_hover_color = Color(0.518503, 0.518503, 0.518503, 1)
+icon = ExtResource("2_p7dwn")
+flat = true
+
+[node name="Salir" type="Button" parent="."]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 451.0
+offset_right = 646.0
+offset_bottom = 492.0
+theme_override_colors/icon_hover_color = Color(0.517647, 0.517647, 0.517647, 1)
+icon = ExtResource("3_qfel3")
+flat = true
+
+[connection signal="pressed" from="Comenzar" to="." method="_on_comenzar_pressed"]
+[connection signal="pressed" from="Salir" to="." method="_on_salir_pressed"]

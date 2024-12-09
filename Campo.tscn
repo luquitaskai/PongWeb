@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=3 uid="uid://b45yg1cxa0rch"]
+
+[ext_resource type="PackedScene" uid="uid://cwt6ynsqvxgx6" path="res://Jugador.tscn" id="1_maf86"]
+[ext_resource type="PackedScene" uid="uid://dv1rjjr805cyb" path="res://raya.tscn" id="1_rb5vx"]
+[ext_resource type="Script" path="res://campo.gd" id="1_uejc3"]
+[ext_resource type="PackedScene" uid="uid://btqshph1dkggr" path="res://enemigo.tscn" id="3_i7aar"]
+[ext_resource type="PackedScene" uid="uid://bmwvcl3h5e8r4" path="res://PuntuacionJugador.tscn" id="5_t1bb1"]
+[ext_resource type="PackedScene" uid="uid://gjn18rsbfmv2" path="res://puntuacion_enemigo.tscn" id="6_s1n4l"]
+[ext_resource type="PackedScene" uid="uid://cpw0qx6dkshj" path="res://suelo.tscn" id="7_7tq1c"]
+[ext_resource type="PackedScene" uid="uid://cjaqr1rbggcoy" path="res://pelota.tscn" id="7_bl787"]
+[ext_resource type="Script" path="res://sistema_de_pausa.gd" id="9_wdajv"]
+[ext_resource type="PackedScene" uid="uid://cr3wlwwtkl161" path="res://ganador_jugador.tscn" id="10_t3eea"]
+[ext_resource type="PackedScene" uid="uid://h5lasaxnnq1k" path="res://ganador_enemigo.tscn" id="11_2gjrp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkhup"]
+size = Vector2(128, 580)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nix8q"]
+size = Vector2(72, 597)
+
+[node name="Campo" type="Node2D"]
+script = ExtResource("1_uejc3")
+metadata/_edit_horizontal_guides_ = [0.0, 0.0]
+
+[node name="Raya" parent="." instance=ExtResource("1_rb5vx")]
+position = Vector2(573, 375)
+rotation = 3.14159
+scale = Vector2(0.208297, -0.294118)
+
+[node name="Jugador" parent="." instance=ExtResource("1_maf86")]
+position = Vector2(1077, 345)
+scale = Vector2(0.784784, 0.691952)
+
+[node name="Enemigo" parent="." instance=ExtResource("3_i7aar")]
+position = Vector2(74, 345)
+scale = Vector2(0.731036, 0.77708)
+
+[node name="PuntuacionJugador" parent="." instance=ExtResource("5_t1bb1")]
+
+[node name="PuntuacionEnemigo" parent="." instance=ExtResource("6_s1n4l")]
+
+[node name="Suelo" parent="." instance=ExtResource("7_7tq1c")]
+position = Vector2(664, 669)
+
+[node name="Suelo2" parent="." instance=ExtResource("7_7tq1c")]
+position = Vector2(530, -19)
+
+[node name="Area del jugador" type="Area2D" parent="."]
+position = Vector2(-88, -8)
+scale = Vector2(0.578831, 1)
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area del jugador"]
+position = Vector2(-50, 325)
+shape = SubResource("RectangleShape2D_dkhup")
+
+[node name="AreaEnemiga" type="Area2D" parent="."]
+position = Vector2(97, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEnemiga"]
+position = Vector2(1180, 322.5)
+shape = SubResource("RectangleShape2D_nix8q")
+
+[node name="Pelota" parent="." instance=ExtResource("7_bl787")]
+position = Vector2(573, 345)
+
+[node name="Sistema de pausa" type="Node2D" parent="."]
+process_mode = 3
+script = ExtResource("9_wdajv")
+
+[node name="Pausa" type="Label" parent="."]
+visible = false
+offset_left = 72.0
+offset_top = 560.0
+offset_right = 448.0
+offset_bottom = 602.0
+theme_override_font_sizes/font_size = 30
+text = "Presiona P para continuar"
+
+[node name="GanadorJugador" parent="." instance=ExtResource("10_t3eea")]
+process_mode = 3
+visible = false
+offset_left = 744.0
+offset_top = 104.0
+offset_right = 744.0
+offset_bottom = 104.0
+scale = Vector2(1.73021, 1.8527)
+
+[node name="GanadorEnemigo" parent="." instance=ExtResource("11_2gjrp")]
+process_mode = 3
+visible = false
+offset_left = 136.0
+offset_top = 104.0
+offset_right = 136.0
+offset_bottom = 104.0
+scale = Vector2(1.74196, 1.80359)
+
+[connection signal="body_entered" from="Area del jugador" to="." method="_on_area_del_jugador_body_entered"]
+[connection signal="body_entered" from="Area del jugador" to="PuntuacionJugador" method="_on_area_del_jugador_body_entered"]
+[connection signal="body_entered" from="AreaEnemiga" to="." method="_on_area_enemiga_body_entered"]
+[connection signal="body_entered" from="AreaEnemiga" to="PuntuacionEnemigo" method="_on_area_enemiga_body_entered"]

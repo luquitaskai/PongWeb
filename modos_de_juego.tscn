@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://crpmetutff8r5"]
+
+[ext_resource type="Script" path="res://modos_de_juego.gd" id="1_byxim"]
+[ext_resource type="Texture2D" uid="uid://8tquyoeiw6pi" path="res://1 jugador.png" id="2_wscqf"]
+[ext_resource type="Texture2D" uid="uid://h42ybnmx28w8" path="res://2 jugador.png" id="3_m6xku"]
+
+[node name="Modo de juego" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_byxim")
+
+[node name="1 Jugador" type="Button" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 175.0
+offset_right = 752.0
+offset_bottom = 288.0
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("2_wscqf")
+
+[node name="2 Jugadores" type="Button" parent="."]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 331.0
+offset_right = 789.0
+offset_bottom = 452.0
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("3_m6xku")
+
+[connection signal="pressed" from="1 Jugador" to="." method="_on__jugador_pressed"]
+[connection signal="pressed" from="2 Jugadores" to="." method="_on__jugadores_pressed"]

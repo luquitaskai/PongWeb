@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://h5lasaxnnq1k"]
+
+[ext_resource type="Script" path="res://ganador_enemigo.gd" id="1_2mhip"]
+[ext_resource type="Texture2D" uid="uid://6acdlgynv54g" path="res://JugarDeNuevo.png" id="2_4d08n"]
+[ext_resource type="Texture2D" uid="uid://ci0u6wjqikmjm" path="res://Menu Principal.png" id="3_ki1g3"]
+[ext_resource type="Texture2D" uid="uid://wgs4awpekssp" path="res://VisitaInstagram.png" id="4_ovu1i"]
+
+[node name="Ganadorenemigo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2mhip")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "Ganador"
+
+[node name="Jugar de nuevo" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 352.0
+offset_bottom = 212.0
+scale = Vector2(0.298746, 0.281246)
+icon = ExtResource("2_4d08n")
+
+[node name="Menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 112.0
+offset_right = 352.0
+offset_bottom = 268.0
+scale = Vector2(0.337411, 0.313799)
+icon = ExtResource("3_ki1g3")
+
+[node name="Instagram" type="Button" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 170.0
+offset_right = 321.0
+offset_bottom = 314.0
+scale = Vector2(0.344945, 0.371304)
+icon = ExtResource("4_ovu1i")
+
+[connection signal="pressed" from="Jugar de nuevo" to="." method="_on_jugar_de_nuevo_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmwvcl3h5e8r4"]
+
+[ext_resource type="Script" path="res://puntuacion_jugador.gd" id="1_qk41k"]
+
+[node name="PuntuacionJugador" type="CanvasLayer"]
+script = ExtResource("1_qk41k")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 643.0
+offset_top = 71.0
+offset_right = 683.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 50
+text = "0"
